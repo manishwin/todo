@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List Example</title>
+</head>
+<body>  
+  <form id="postForm">
+    <input type="text" id="input" />
+    <button type="submit">POST</button>
+  </form>
+  
+  <ul id="todoList"></ul>
+  
+  <br>
+  
+  <form id="getForm">
+    <input type="text" id="inputGet" />
+    <button type="button" id="getButton">GET</button>
+  </form>
+
+  <script>
+    const postForm = document.getElementById('postForm');
+    const getForm = document.getElementById('getForm');
+    const getButton = document.getElementById('getButton');
+    const input = document.getElementById('input');
+    const inputGet = document.getElementById('inputGet');
+    const todoList = document.getElementById('todoList');
+    let lastPostedData = ''; // Variable to store the last posted data
+    
+    // Event listener for the POST form submission
+    postForm.addEventListener('submit', handlePost);
+    
+    // Event listener for the GET button click
+    getButton.addEventListener('click', handleGet);
+    
+    async function handlePost(e) {
+      e.preventDefault();
+      const inputValue = input.value.trim();
+      if (inputValue === '') { return; }
+      
+      // Create a new list item for the todo
+      const listItem = document.createElement('li');
+      listItem.textContent = inputValue;
+      
+      // Append the list item to the todo list
+      todoList.appendChild(listItem);
+      
+      // Store the last posted data
+      lastPostedData = inputValue;
+      
+      // Clear the input field after adding todo
+      input.value = '';
+    }
+    
+    async function handleGet() {
+      // Set the inputGet value to the last posted data
+      inputGet.value = lastPostedData;
+    }
+  </script>
+</body>
+</html>
