@@ -1,6 +1,6 @@
 # Todo-list app
 
-Simple doto app in which workw with api and html and javascript.
+Simple doto app in which work with Express, html and javascript.
 
 
 ### `#Prerequisites:`
